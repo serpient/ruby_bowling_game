@@ -1,7 +1,6 @@
-clearing:on
+clearing :on
 
-guard :rspec, cmd: "bundle exec rspec --color" do
-
+guard :rspec, cmd: 'bundle exec rspec --color' do
   # watch /lib/ files
   watch(%r{^lib/(.+).rb$}) do |m|
     "spec/#{m[1]}_spec.rb"
@@ -9,6 +8,6 @@ guard :rspec, cmd: "bundle exec rspec --color" do
 
   # watch /spec/ files
   watch(%r{^spec/(.+).rb$}) do |m|
-   "spec/#{m[1]}.rb"
+    "spec/#{m[1]}.rb"
   end
 end
