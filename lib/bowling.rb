@@ -9,7 +9,7 @@ class Bowling
   end
 
   def extract_integer(value)
-    value[/\d+/].to_i
+    value[/\d/].to_i
   end
 
   def get_value_of(roll)

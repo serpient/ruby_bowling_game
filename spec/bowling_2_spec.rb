@@ -40,17 +40,23 @@ describe 'bowling' do
       expect(bowling.spare_score(0)).to eq 20
     end
 
-    it '7' do
+    it '12' do
       spare_set = '5/ 2/'
       bowling = Bowling2.new(spare_set)
       expect(bowling.spare_score(0)).to eq 12
     end
 
-    it '9' do
+    it '14' do
       spare_set = '5/4'
       bowling = Bowling2.new(spare_set)
-      expect(bowling.spare_score(0)).to eq 9
+      expect(bowling.spare_score(0)).to eq 14
     end
+
+    it '18' do
+        spare_set = '4/ 8/4'
+        bowling = Bowling2.new(spare_set)
+        expect(bowling.spare_score(0)).to eq 18
+      end
   end
 
   context 'returns strike score' do
@@ -66,10 +72,16 @@ describe 'bowling' do
       expect(bowling.strike_score(0)).to eq 30
     end
 
-    it '0' do
-      strike_set = 'X X'
+    it '25' do
+        strike_set = 'X 8/ 7/7'
+        bowling = Bowling2.new(strike_set)
+        expect(bowling.strike_score(0)).to eq 25
+    end
+  
+    it '22' do
+      strike_set = 'X 5/7'
       bowling = Bowling2.new(strike_set)
-      expect(bowling.strike_score(0)).to eq 0
+      expect(bowling.strike_score(0)).to eq 22
     end
 
     it '0' do
@@ -93,9 +105,51 @@ describe 'bowling' do
     end
 
     it '150' do
-        spare_set = '5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5 '
+        spare_set = '5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5'
         bowling = Bowling2.new(spare_set)
         expect(bowling.score).to eq 150
+    end
+
+    it '33' do
+        mixed_set = '5- 8/ 9-'
+        bowling = Bowling2.new(mixed_set)
+        expect(bowling.score).to eq 33
+    end
+
+    it '61' do
+        mixed_set = '5- 8/ 9- 9/ 9-'
+        bowling = Bowling2.new(mixed_set)
+        expect(bowling.score).to eq 61
+    end
+
+    it '98' do
+        mixed_set = '5- 8/ 9- 9/ 9- 5/ 9- 9-'
+        bowling = Bowling2.new(mixed_set)
+        expect(bowling.score).to eq 98
+    end
+
+    it '116' do
+        mixed_set = '5- 8/ 9- 9/ 9- 5/ 9- 9- 3/ 4-'
+        bowling = Bowling2.new(mixed_set)
+        expect(bowling.score).to eq 116
+    end
+
+    it '127' do
+        mixed_set = '5- 8/ 9- 9/ 9- 5/ 9- 9- 3/ 4/5'
+        bowling = Bowling2.new(mixed_set)
+        expect(bowling.score).to eq 127
+    end
+
+    it '111' do
+        mixed_set = '5- 8/ 9- 9/ 9- 5/ 9- 9- 3/ 4/5'
+        bowling = Bowling2.new(mixed_set)
+        expect(bowling.score).to eq 111
+    end
+
+    it '148' do
+        mixed_set = '3/ 6/ 5/ 8/ 2/ 4/ 9/ 4/ 1/ 0/9'
+        bowling = Bowling2.new(mixed_set)
+        expect(bowling.score).to eq 148
     end
   end
 end

@@ -20,13 +20,15 @@ class Bowling2
     if rolls[roll_idx + 1]
       10 + parse(rolls[roll_idx + 1])
     else
-      parse(rolls[roll_idx][0]) + parse(rolls[roll_idx][-1])
+      10 + parse(rolls[roll_idx][-1])
     end
   end
 
   def strike_score(roll_idx)
     if rolls[roll_idx + 2] && rolls[roll_idx + 1]
       10 + parse(rolls[roll_idx + 1]) + parse(rolls[roll_idx + 2])
+    elsif rolls[roll_idx + 1] and rolls[roll_idx + 1].include? spare
+      10 + parse(rolls[roll_idx + 1][0]) + parse(rolls[roll_idx + 1][-1])
     else
       0
     end
@@ -40,6 +42,8 @@ class Bowling2
     score = 0
     rolls.each_with_index do |roll, roll_idx|
       case 
+      when roll_idx >= 10
+        break
       when roll.include?(spare)
         score += spare_score(roll_idx)
       when roll.include?(strike)
