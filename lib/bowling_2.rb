@@ -16,9 +16,17 @@ class Bowling2
     value == strike ? 10 : value[/\d/].to_i
   end
 
+  def get_next_roll(roll_idx)
+    rolls[roll_idx + 1]
+  end
+
+  def get_next_roll_score(roll_idx)
+    parse(get_next_roll(roll_idx))
+  end
+
   def spare_score(roll_idx)
     if rolls[roll_idx + 1]
-      10 + parse(rolls[roll_idx + 1])
+      10 + get_next_roll_score(roll_idx)
     else
       10 + parse(rolls[roll_idx][-1])
     end
@@ -26,9 +34,9 @@ class Bowling2
 
   def strike_score(roll_idx)
     if rolls[roll_idx + 2] && rolls[roll_idx + 1]
-      10 + parse(rolls[roll_idx + 1]) + parse(rolls[roll_idx + 2])
+      10 + get_next_roll_score(roll_idx) + get_next_roll_score(roll_idx + 1)
     elsif rolls[roll_idx + 1] and rolls[roll_idx + 1].include? spare
-      10 + parse(rolls[roll_idx + 1][0]) + parse(rolls[roll_idx + 1][-1])
+      10 + parse(get_next_roll(roll_idx)[0]) + parse(get_next_roll(roll_idx)[-1])
     else
       0
     end
