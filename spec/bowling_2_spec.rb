@@ -140,12 +140,6 @@ describe 'bowling' do
         expect(bowling.score).to eq 127
     end
 
-    it '111' do
-        mixed_set = '5- 8/ 9- 9/ 9- 5/ 9- 9- 3/ 4/5'
-        bowling = Bowling2.new(mixed_set)
-        expect(bowling.score).to eq 111
-    end
-
     it '148' do
         mixed_set = '3/ 6/ 5/ 8/ 2/ 4/ 9/ 4/ 1/ 0/9'
         bowling = Bowling2.new(mixed_set)
